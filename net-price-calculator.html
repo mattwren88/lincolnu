@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Net Price Calculator | Lincoln University</title>
+
+  <link href="./Academics _ Lincoln University of Missouri_files/css2" rel="stylesheet">
+  <link href="./Academics _ Lincoln University of Missouri_files/css2(1)" rel="stylesheet">
+  <link href="./Academics _ Lincoln University of Missouri_files/all.css" rel="stylesheet">
+  <link href="./Academics _ Lincoln University of Missouri_files/style.css" rel="stylesheet">
+  <link href="./net-price-calculator.css" rel="stylesheet">
+</head>
+<body class="interior">
+  <main class="mainBody interior">
+    <section class="calc-hero">
+      <div class="wrapper">
+        <div class="heading">
+          <p class="subhead">Financial Services</p>
+          <h1>Net Price Calculator</h1>
+          <p>Use this tool to estimate your tuition, program fees, and books for graduate programs at Lincoln University. Choose per semester or annual totals to plan your budget.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="calc-shell" id="calculator">
+      <div class="wrapper">
+        <div class="calc-grid">
+          <div class="calc-panel form">
+            <h2 class="section-title">Your enrollment details</h2>
+            <p class="section-lede">Adjust the options below to match how you plan to enroll.</p>
+
+            <form id="netPriceForm" novalidate>
+              <div class="field">
+                <label>Enrollment type</label>
+                <div class="choice-list">
+                  <label class="choice">
+                    <input type="radio" name="enrollmentType" value="online">
+                    <div>
+                      <strong>Online (LUO)</strong>
+                      <p class="note">ECD, HED, MSN, MBA.MGT, MED.K12</p>
+                    </div>
+                  </label>
+
+                  <label class="choice">
+                    <input type="radio" name="enrollmentType" value="inseat">
+                    <div>
+                      <strong>In-seat (on campus)</strong>
+                      <p class="note">Requires a residency selection</p>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field" data-residency hidden>
+                <label>Residency</label>
+                <div class="choice-list">
+                  <label class="choice">
+                    <input type="radio" name="residency" value="instate">
+                    <div>
+                      <strong>Missouri resident</strong>
+                      <p class="note">In-state tuition</p>
+                    </div>
+                  </label>
+                  <label class="choice">
+                    <input type="radio" name="residency" value="outstate">
+                    <div>
+                      <strong>Non-Missouri resident</strong>
+                      <p class="note">Out-of-state tuition</p>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="program">Graduate program</label>
+                <select id="program" name="program">
+                  <option value="">-- Select a Program --</option>
+                  <optgroup label="Education Programs (EDU/HED) - $15/hr fee">
+                    <option value="edu-ecd">Early Childhood Development (ECD)</option>
+                    <option value="edu-hed">Higher Education (HED)</option>
+                    <option value="edu-medk12">Master of Education K-12 (MED.K12)</option>
+                    <option value="edu-medcou">MEd Counseling (MEd.COU)</option>
+                    <option value="edu-other">Other Education Programs</option>
+                  </optgroup>
+                  <optgroup label="Business Programs (BUS) - $20/hr fee">
+                    <option value="bus-mba">MBA - General</option>
+                    <option value="bus-mbamgt">MBA Management (MBA.MGT)</option>
+                    <option value="bus-mbaother">MBA - Other Concentrations</option>
+                  </optgroup>
+                  <optgroup label="Nursing Programs (NUR) - $125/hr fee">
+                    <option value="nur-msn">Master of Science in Nursing (MSN)</option>
+                  </optgroup>
+                  <optgroup label="Other Programs - No program fee">
+                    <option value="other-agr">Agriculture (AGR)</option>
+                    <option value="other-ns">Natural Sciences (NS)</option>
+                    <option value="other-his">History (HIS)</option>
+                    <option value="other-soc">Sociology/Criminal Justice (SOC/SCJ)</option>
+                  </optgroup>
+                </select>
+              </div>
+
+              <div class="field">
+                <div class="range-row">
+                  <label for="creditHours">Credit hours</label>
+                  <strong><span data-credit-display>6</span> hours · <span data-course-count>2</span> courses</strong>
+                </div>
+                <div class="range-track">
+                  <input type="range" id="creditHours" name="creditHours" min="1" max="12" value="6" step="1">
+                </div>
+                <div class="range-scale" data-scale>
+                  <span data-tick-value="1">1</span>
+                  <span data-tick-value="3">3</span>
+                  <span data-tick-value="6">6</span>
+                  <span data-tick-value="9">9</span>
+                  <span data-tick-value="12">12</span>
+                </div>
+                <p class="note">Every three credit hours is roughly one course.</p>
+              </div>
+
+              <div class="form-footer">
+                <button class="btnLrg" type="submit">Calculate my costs</button>
+                <span class="form-note" data-form-note></span>
+              </div>
+            </form>
+          </div>
+
+          <div class="calc-panel results">
+            <div class="results-block">
+              <header>
+                <h3>Graduate cost summary</h3>
+              </header>
+              <div class="results-body">
+                <div class="pill-toggle" role="group" aria-label="Choose cost period">
+                  <button type="button" class="is-active" data-period="semester">Per semester</button>
+                  <button type="button" data-period="year">Per year</button>
+                </div>
+
+                <div class="result-row">
+                  <span class="result-label">Tuition rate</span>
+                  <span class="result-value" data-result="tuitionRate">$0</span>
+                </div>
+                <div class="result-row">
+                  <span class="result-label">Tuition</span>
+                  <span class="result-value" data-result="tuitionCost">$0</span>
+                </div>
+                <div class="result-row">
+                  <span class="result-label">Program fees</span>
+                  <span class="result-value" data-result="programFees">$0</span>
+                </div>
+                <div class="result-row">
+                  <span class="result-label">Books &amp; supplies (<span data-result="numCourses">0</span> courses)</span>
+                  <span class="result-value" data-result="booksCost">$0</span>
+                </div>
+
+                <div class="total-card">
+                  <h3>Total estimated</h3>
+                  <div class="total-figure" data-result="totalCost">$0</div>
+                  <p class="small">Based on your selections above.</p>
+                </div>
+
+                <div class="disclaimer">
+                  These figures are estimates only and may change based on course-specific or lab fees. Financial aid is not reflected in this calculator. Connect with Financial Services for personalized guidance.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    window.netPriceConfig = {
+      slider: { min: 1, max: 12, default: 6, ticks: [1, 3, 6, 9, 12] },
+      bookCostPerCourse: 90,
+      tuitionRates: { online: 372, inseat: { instate: 372, outstate: 690 } },
+      programFeeRates: { edu: 15, bus: 20, nur: 125, other: 0 }
+    };
+  </script>
+  <script src="./net-price-calculator.js"></script>
+</body>
+</html>

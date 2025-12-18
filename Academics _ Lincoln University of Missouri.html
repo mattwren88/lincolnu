@@ -19,6 +19,7 @@
 <link href="./Academics _ Lincoln University of Missouri_files/all.css" rel="stylesheet"> 
 <link href="./Academics _ Lincoln University of Missouri_files/css2(1)" rel="stylesheet">
 <link href="./Academics _ Lincoln University of Missouri_files/style.css" rel="stylesheet">
+<link href="./net-price-calculator.css" rel="stylesheet">
                     
 <!-- Google tag (gtag.js) -->
 <script async="" src="./Academics _ Lincoln University of Missouri_files/events.js"></script><script async="" src="./Academics _ Lincoln University of Missouri_files/gtm.js"></script><script async="" src="./Academics _ Lincoln University of Missouri_files/js"></script>
@@ -471,13 +472,159 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</nav>
 			</div>
 								        <div class="mainContent col8" id="skipToContent">
-            			                                                                <div aria-label="page introduction" class="wysiwygContent" role="region">
-                            <p>First established to train teachers, Lincoln University expanded into a land grand institution, focusing on agricultural and industrial courses, before finally evolving into the university it is today. Every step of the way, our focus has remained consistent in providing a high-quality education to our diverse population of students.</p>
-<p>Offering a wide array of <a href="https://www.lincolnu.edu/academics/programs-of-study.html">bachelor's and master's degrees</a><em>&nbsp;</em>throughout our specialized <a href="https://www.lincolnu.edu/academics/colleges-and-departments/index.html">colleges and departments</a>,&nbsp;we aim to meet your educational needs.</p>
-<p>At Lincoln, you'll learn in a student-centered environment with small classes (15:1 student to faculty ratio) and plenty of personal interaction with our expert faculty — more than 67% of whom possess the highest degrees in their fields.</p>
-<p>Our robust <a href="https://www.lincolnu.edu/academics/academic-success-center.html">student support services</a>&nbsp;bolsters in-class learning, as does a variety of internships and hands-on learning opportunities, many of which are unique to Lincoln, thanks to our location in the capital of Missouri.</p>
-<p>If you're ready to start learning, achieving and excelling as a Lincoln Blue Tiger, then <a href="https://www.lincolnu.edu/admissions/applynow.html" rel="noopener" target="_blank">apply today</a>. We're committed to building a progressive future, filled with opportunities for you to build a lasting career, give back to your community and push yourself to achieve your loftiest goals.</p>
-                        </div>
+                        <section class="calc-shell" id="net-price-calculator">
+                          <div class="wrapper">
+                            <div class="calc-hero">
+                              <div class="heading">
+                                <p class="subhead">Financial Services</p>
+                                <h2>Net Price Calculator</h2>
+                                <p>Estimate tuition, program fees, and books for graduate programs at Lincoln University. Switch between per-semester and annual totals to plan confidently.</p>
+                              </div>
+                            </div>
+
+                            <div class="calc-grid">
+                              <div class="calc-panel form">
+                                <h3 class="section-title">Your enrollment details</h3>
+                                <p class="section-lede">Adjust the options below to match how you plan to enroll.</p>
+
+                                <form id="netPriceForm" novalidate>
+                                  <div class="field">
+                                    <label>Enrollment type</label>
+                                    <div class="choice-list">
+                                      <label class="choice">
+                                        <input type="radio" name="enrollmentType" value="online">
+                                        <div>
+                                          <strong>Online (LUO)</strong>
+                                          <p class="note">ECD, HED, MSN, MBA.MGT, MED.K12</p>
+                                        </div>
+                                      </label>
+
+                                      <label class="choice">
+                                        <input type="radio" name="enrollmentType" value="inseat">
+                                        <div>
+                                          <strong>In-seat (on campus)</strong>
+                                          <p class="note">Requires a residency selection</p>
+                                        </div>
+                                      </label>
+                                    </div>
+                                  </div>
+
+                                  <div class="field" data-residency hidden>
+                                    <label>Residency</label>
+                                    <div class="choice-list">
+                                      <label class="choice">
+                                        <input type="radio" name="residency" value="instate">
+                                        <div>
+                                          <strong>Missouri resident</strong>
+                                          <p class="note">In-state tuition</p>
+                                        </div>
+                                      </label>
+                                      <label class="choice">
+                                        <input type="radio" name="residency" value="outstate">
+                                        <div>
+                                          <strong>Non-Missouri resident</strong>
+                                          <p class="note">Out-of-state tuition</p>
+                                        </div>
+                                      </label>
+                                    </div>
+                                  </div>
+
+                                  <div class="field">
+                                    <label for="program">Graduate program</label>
+                                    <select id="program" name="program">
+                                      <option value="">-- Select a Program --</option>
+                                      <optgroup label="Education Programs (EDU/HED) - $15/hr fee">
+                                        <option value="edu-ecd">Early Childhood Development (ECD)</option>
+                                        <option value="edu-hed">Higher Education (HED)</option>
+                                        <option value="edu-medk12">Master of Education K-12 (MED.K12)</option>
+                                        <option value="edu-medcou">MEd Counseling (MEd.COU)</option>
+                                        <option value="edu-other">Other Education Programs</option>
+                                      </optgroup>
+                                      <optgroup label="Business Programs (BUS) - $20/hr fee">
+                                        <option value="bus-mba">MBA - General</option>
+                                        <option value="bus-mbamgt">MBA Management (MBA.MGT)</option>
+                                        <option value="bus-mbaother">MBA - Other Concentrations</option>
+                                      </optgroup>
+                                      <optgroup label="Nursing Programs (NUR) - $125/hr fee">
+                                        <option value="nur-msn">Master of Science in Nursing (MSN)</option>
+                                      </optgroup>
+                                      <optgroup label="Other Programs - No program fee">
+                                        <option value="other-agr">Agriculture (AGR)</option>
+                                        <option value="other-ns">Natural Sciences (NS)</option>
+                                        <option value="other-his">History (HIS)</option>
+                                        <option value="other-soc">Sociology/Criminal Justice (SOC/SCJ)</option>
+                                      </optgroup>
+                                    </select>
+                                  </div>
+
+                                  <div class="field">
+                                    <div class="range-row">
+                                      <label for="creditHours">Credit hours</label>
+                                      <strong><span data-credit-display>6</span> hours · <span data-course-count>2</span> courses</strong>
+                                    </div>
+                                    <div class="range-track">
+                                      <input type="range" id="creditHours" name="creditHours" min="1" max="12" value="6" step="1">
+                                    </div>
+                                    <div class="range-scale" data-scale>
+                                      <span data-tick-value="1">1</span>
+                                      <span data-tick-value="3">3</span>
+                                      <span data-tick-value="6">6</span>
+                                      <span data-tick-value="9">9</span>
+                                      <span data-tick-value="12">12</span>
+                                    </div>
+                                    <p class="note">Every three credit hours is roughly one course.</p>
+                                  </div>
+
+                                  <div class="form-footer">
+                                    <button class="btnLrg" type="submit">Calculate my costs</button>
+                                    <span class="form-note" data-form-note></span>
+                                  </div>
+                                </form>
+                              </div>
+
+                              <div class="calc-panel results">
+                                <div class="results-block">
+                                  <header>
+                                    <h3>Graduate cost summary</h3>
+                                  </header>
+                                  <div class="results-body">
+                                    <div class="pill-toggle" role="group" aria-label="Choose cost period">
+                                      <button type="button" class="is-active" data-period="semester">Per semester</button>
+                                      <button type="button" data-period="year">Per year</button>
+                                    </div>
+
+                                    <div class="result-row">
+                                      <span class="result-label">Tuition rate</span>
+                                      <span class="result-value" data-result="tuitionRate">$0</span>
+                                    </div>
+                                    <div class="result-row">
+                                      <span class="result-label">Tuition</span>
+                                      <span class="result-value" data-result="tuitionCost">$0</span>
+                                    </div>
+                                    <div class="result-row">
+                                      <span class="result-label">Program fees</span>
+                                      <span class="result-value" data-result="programFees">$0</span>
+                                    </div>
+                                    <div class="result-row">
+                                      <span class="result-label">Books &amp; supplies (<span data-result="numCourses">0</span> courses)</span>
+                                      <span class="result-value" data-result="booksCost">$0</span>
+                                    </div>
+
+                                    <div class="total-card">
+                                      <h3>Total estimated</h3>
+                                      <div class="total-figure" data-result="totalCost">$0</div>
+                                      <p class="small">Based on your selections above.</p>
+                                    </div>
+
+                                    <div class="disclaimer">
+                                      These figures are estimates only and may change based on course-specific or lab fees. Financial aid is not reflected in this calculator. Connect with Financial Services for personalized guidance.
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </section>
                                     									                          
                         		    	    	      <style>
 	        .wysiwygContent.grid {
@@ -781,12 +928,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
 		
 		
-        <script src="./Academics _ Lincoln University of Missouri_files/jquery-3.4.1.min.js"></script>
+<script src="./Academics _ Lincoln University of Missouri_files/jquery-3.4.1.min.js"></script>
 <script src="./Academics _ Lincoln University of Missouri_files/slick.min.js"></script>
 <script src="./Academics _ Lincoln University of Missouri_files/jquery.magnific-popup.min.js"></script>
 <script src="./Academics _ Lincoln University of Missouri_files/accessible-menu-links.js"></script>
 <script src="./Academics _ Lincoln University of Missouri_files/accordion.js"></script> 
 <script src="./Academics _ Lincoln University of Missouri_files/scripts.js"></script>
+<script>
+window.netPriceConfig = {
+  slider: { min: 1, max: 12, default: 6, ticks: [1, 3, 6, 9, 12] },
+  bookCostPerCourse: 90,
+  tuitionRates: { online: 372, inseat: { instate: 372, outstate: 690 } },
+  programFeeRates: { edu: 15, bus: 20, nur: 125, other: 0 }
+};
+</script>
+<script src="./net-price-calculator.js"></script>
 
                     <!-- Media Gallery Scripts -->
 <script src="./Academics _ Lincoln University of Missouri_files/jquery.nanogallery2.js"></script>
