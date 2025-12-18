@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graduate Studies Cost Calculator - Lincoln University</title>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=Open+Sans:wght@400;600&family=Raleway:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 400;
+            line-height: 1.5;
+            background: #FFFFFF;
+            color: #323232;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1350px;
+            margin: 0 auto;
+            background: white;
+        }
+        
+        h1 {
+            font-family: 'EB Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            color: #0C2340;
+            margin: 10px 0;
+            line-height: 1.1;
+        }
+        
+        h2 {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.875rem;
+            letter-spacing: .4px;
+            color: #0C2340;
+            margin: 20px 0 15px 0;
+            line-height: 1.1;
+        }
+        
+        h3 {
+            font-family: 'Raleway', sans-serif;
+            font-size: 1em;
+            font-weight: 700;
+            color: #323232;
+            line-height: 1.1;
+            letter-spacing: .0725rem;
+            margin-bottom: .75rem;
+            text-transform: uppercase;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #0C2340 0%, #2c3e50 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .header h1 {
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            color: white;
+        }
+        
+        .calculator-wrapper {
+            display: flex;
+            gap: 30px;
+            padding: 0 30px;
+        }
+        
+        .calculator-form {
+            flex: 1;
+            background: #F4F4F4;
+            padding: 30px;
+            border-top: 4px solid #C6B66D;
+        }
+        
+        .form-section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #E3E3E3;
+        }
+        
+        .form-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #0C2340;
+            font-size: 1rem;
+        }
+        
+        .help-text {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            margin-top: 5px;
+        }
+        
+        select, input[type="number"], input[type="text"] {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+            background: white;
+            color: #323232;
+        }
+        
+        select:focus, input:focus {
+            outline: none;
+            border-color: #0C2340;
+        }
+        
+        input[type="range"] {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 5px;
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+            margin: 20px 0;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #0C2340;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            margin-top: -6px;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb:hover {
+            background: #C6B66D;
+            transform: scale(1.2);
+        }
+        
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: #0C2340;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        input[type="range"]::-moz-range-thumb:hover {
+            background: #C6B66D;
+            transform: scale(1.2);
+        }
+        
+        input[type="range"]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 5px;
+        }
+        
+        input[type="range"]::-moz-range-track {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 5px;
+        }
+        
+        input[type="range"]::-moz-range-progress {
+            background: #C6B66D;
+            height: 8px;
+            border-radius: 5px;
+        }
+        
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .radio-option {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: white;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .radio-option:hover {
+            border-color: #C6B66D;
+            background: #fafafa;
+        }
+        
+        .radio-option input[type="radio"] {
+            width: auto;
+            margin-right: 10px;
+            margin-top: 0;
+            vertical-align: middle;
+        }
+        
+        .radio-option label {
+            margin-bottom: 0;
+            font-weight: 400;
+            cursor: pointer;
+            vertical-align: middle;
+        }
+        
+        .radio-option.selected {
+            border-color: #0C2340;
+            background: #f0f4f8;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: white;
+            border: 1px solid #ddd;
+        }
+        
+        .checkbox-option input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+        }
+        
+        .checkbox-option span {
+            flex: 1;
+        }
+        
+        .checkbox-option .fee-amount {
+            color: #7E7626;
+            font-weight: 600;
+            margin-left: auto;
+        }
+        
+        .btnLrg {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            display: inline-block;
+            background-color: #C6B66D;
+            border: 2px solid transparent;
+            border-radius: 30px;
+            margin: 1em 0;
+            padding: .75rem 2.5rem;
+            line-height: 1;
+            letter-spacing: .025em;
+            color: #0C2340;
+            text-decoration: none;
+            transition: .25s all ease;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        .btnLrg:hover {
+            background-color: transparent;
+            border: 2px solid #0C2340;
+        }
+        
+        .btnLrg:after {
+            content: '\2192';
+            margin-left: 1rem;
+            transition: .25s all ease;
+        }
+        
+        .btnLrg:hover:after {
+            margin-left: 1.125rem;
+        }
+        
+        .results-section {
+            flex: 1;
+            background: white;
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+        }
+        
+        .results-header {
+            background: #0C2340;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .results-header h2 {
+            color: white;
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        
+        .period-selector {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            background: white;
+            padding: 15px;
+        }
+        
+        .period-btn {
+            padding: 8px 20px;
+            background: white;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .period-btn.active {
+            background: #0C2340;
+            color: white;
+        }
+        
+        .cost-breakdown {
+            padding: 20px;
+            background: #F4F4F4;
+        }
+        
+        .cost-category {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #E3E3E3;
+        }
+        
+        .cost-category:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .cost-category h3 {
+            color: #0C2340;
+            margin-bottom: 15px;
+        }
+        
+        .cost-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 0.95rem;
+        }
+        
+        .cost-label {
+            color: #4D4D4D;
+        }
+        
+        .cost-value {
+            font-weight: 600;
+            color: #0C2340;
+        }
+        
+        .total-section {
+            background: linear-gradient(135deg, #C6B66D 0%, #7E7626 100%);
+            padding: 25px;
+            text-align: center;
+            color: white;
+        }
+        
+        .total-label {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #0C2340;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .total-amount {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #0C2340;
+        }
+        
+        .disclaimer {
+            background: #fff4e5;
+            border-left: 4px solid #C6B66D;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        
+        .disclaimer h3 {
+            color: #7E7626;
+            margin-bottom: 8px;
+        }
+        
+        .disclaimer p {
+            color: #795548;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .hidden {
+            display: none !important;
+        }
+        
+        @media (max-width: 960px) {
+            .calculator-wrapper {
+                flex-direction: column;
+            }
+            
+            .results-section {
+                position: static;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .calculator-wrapper {
+                padding: 0 15px;
+            }
+            
+            .calculator-form {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Graduate Studies Cost Calculator</h1>
+            <p>Estimate your tuition and fees for Graduate Programs at Lincoln University</p>
+        </div>
+        
+        <div class="calculator-wrapper">
+            <div class="calculator-form">
+                <form id="costCalculator">
+                    <div class="form-section">
+                        <h3>Academic Period</h3>
+                        <div class="form-group">
+                            <label for="semester">Select Term</label>
+                            <select id="semester" name="semester">
+                                <option value="fall2025">Fall 2025</option>
+                                <option value="spring2026">Spring 2026</option>
+                                <option value="summer2026">Summer 2026</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>Enrollment Information</h3>
+                        <div class="form-group">
+                            <label>Enrollment Type</label>
+                            <div class="radio-group">
+                                <div class="radio-option" onclick="selectRadio(this)">
+                                    <input type="radio" name="enrollmentType" value="online" id="online">
+                                    <label for="online">Online (LUO) - ECD, HED, MSN, MBA.MGT, MED.K12</label>
+                                </div>
+                                <div class="radio-option" onclick="selectRadio(this)">
+                                    <input type="radio" name="enrollmentType" value="inseat" id="inseat">
+                                    <label for="inseat">In-Seat (On Campus)</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group hidden" id="residencyGroup">
+                            <label>Residency Status</label>
+                            <div class="radio-group">
+                                <div class="radio-option" onclick="selectRadio(this)">
+                                    <input type="radio" name="residency" value="instate" id="instate">
+                                    <label for="instate">Missouri Resident (In-State)</label>
+                                </div>
+                                <div class="radio-option" onclick="selectRadio(this)">
+                                    <input type="radio" name="residency" value="outstate" id="outstate">
+                                    <label for="outstate">Non-Missouri Resident (Out-of-State)</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>Academic Program</h3>
+                        <div class="form-group">
+                            <label for="program">Select Your Graduate Program</label>
+                            <select id="program" name="program">
+                                <option value="">-- Select a Program --</option>
+                                <optgroup label="Education Programs (EDU/HED) - $15/hr fee">
+                                    <option value="edu-ecd">Early Childhood Development (ECD)</option>
+                                    <option value="edu-hed">Higher Education (HED)</option>
+                                    <option value="edu-medk12">Master of Education K-12 (MED.K12)</option>
+                                    <option value="edu-medcou">MEd Counseling (MEd.COU)</option>
+                                    <option value="edu-other">Other Education Programs</option>
+                                </optgroup>
+                                <optgroup label="Business Programs (BUS) - $20/hr fee">
+                                    <option value="bus-mba">MBA - General</option>
+                                    <option value="bus-mbamgt">MBA Management (MBA.MGT)</option>
+                                    <option value="bus-mbaother">MBA - Other Concentrations</option>
+                                </optgroup>
+                                <optgroup label="Nursing Programs (NUR) - $125/hr fee">
+                                    <option value="nur-msn">Master of Science in Nursing (MSN)</option>
+                                </optgroup>
+                                <optgroup label="Other Programs - No program fee">
+                                    <option value="other-agr">Agriculture (AGR)</option>
+                                    <option value="other-ns">Natural Sciences (NS)</option>
+                                    <option value="other-his">History (HIS)</option>
+                                    <option value="other-soc">Sociology/Criminal Justice (SOC/SCJ)</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="creditHours">Credit Hours: <span id="creditHoursValue" style="color: #0C2340; font-weight: bold;">6</span></label>
+                            <input type="range" id="creditHours" name="creditHours" min="1" max="12" value="6" step="1">
+                            <div style="display: flex; justify-content: space-between; margin-top: 5px; font-size: 0.85rem; color: #7f8c8d;">
+                                <span>1</span>
+                                <span>3</span>
+                                <span>6</span>
+                                <span>9</span>
+                                <span>12</span>
+                            </div>
+                            <p class="help-text">Every 3 credit hours = 1 course (<span id="courseCount">2</span> courses selected)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>Additional Options</h3>
+                        <div class="checkbox-group">
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="includeBooks" checked>
+                                <span>Books & Supplies</span>
+                                <span class="fee-amount">$90/course</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="button" class="btnLrg" onclick="calculateCost()">Calculate Total Cost</button>
+                </form>
+            </div>
+            
+            <div class="results-section">
+                <div class="results-header">
+                    <h2>Estimated Cost Summary</h2>
+                </div>
+                
+                <div class="period-selector">
+                    <button class="period-btn active" onclick="togglePeriod('semester')">Per Semester</button>
+                    <button class="period-btn" onclick="togglePeriod('year')">Per Year</button>
+                </div>
+                
+                <div class="cost-breakdown">
+                    <div class="cost-category">
+                        <h3>Tuition & Fees</h3>
+                        <div class="cost-item">
+                            <span class="cost-label">Tuition (<span id="tuitionRate">$0</span>/credit hour)</span>
+                            <span class="cost-value" id="tuitionCost">$0</span>
+                        </div>
+                        <div class="cost-item">
+                            <span class="cost-label">Program Fees</span>
+                            <span class="cost-value" id="programFees">$0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="cost-category">
+                        <h3>Books & Supplies</h3>
+                        <div class="cost-item">
+                            <span class="cost-label">Books (<span id="numCourses">0</span> courses)</span>
+                            <span class="cost-value" id="booksCost">$0</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="total-section">
+                    <div class="total-label">Total Estimated Cost</div>
+                    <div class="total-amount" id="totalCost">$0</div>
+                </div>
+                
+                <div class="disclaimer">
+                    <h3>Important Note</h3>
+                    <p>This is an estimate only. Actual costs may vary based on specific course fees, lab fees, and other factors. Financial aid has not been deducted from these estimates. Please contact the Financial Services office for detailed information about your specific program and financial aid options.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let currentPeriod = 'semester';
+        let lastCalculation = null;
+        
+        function selectRadio(element) {
+            const radioGroup = element.parentElement;
+            radioGroup.querySelectorAll('.radio-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            element.classList.add('selected');
+            element.querySelector('input[type="radio"]').checked = true;
+            
+            if (element.querySelector('input').name === 'enrollmentType') {
+                const value = element.querySelector('input').value;
+                const residencyGroup = document.getElementById('residencyGroup');
+                
+                if (value === 'inseat') {
+                    residencyGroup.classList.remove('hidden');
+                } else {
+                    residencyGroup.classList.add('hidden');
+                    document.querySelectorAll('input[name="residency"]').forEach(radio => {
+                        radio.checked = false;
+                        radio.parentElement.classList.remove('selected');
+                    });
+                }
+            }
+        }
+        
+        function togglePeriod(period) {
+            currentPeriod = period;
+            document.querySelectorAll('.period-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            if (lastCalculation) {
+                updateDisplay();
+            }
+        }
+        
+        function updateDisplay() {
+            if (!lastCalculation) return;
+            
+            const multiplier = currentPeriod === 'year' ? 2 : 1;
+            
+            document.getElementById('tuitionRate').textContent = lastCalculation.tuitionRateDisplay;
+            document.getElementById('tuitionCost').textContent = '$' + (lastCalculation.tuitionCost * multiplier).toLocaleString();
+            document.getElementById('programFees').textContent = '$' + (lastCalculation.programFees * multiplier).toLocaleString();
+            document.getElementById('numCourses').textContent = lastCalculation.numCourses * multiplier;
+            document.getElementById('booksCost').textContent = '$' + (lastCalculation.booksCost * multiplier).toLocaleString();
+            document.getElementById('totalCost').textContent = '$' + (lastCalculation.totalCost * multiplier).toLocaleString();
+        }
+        
+        function calculateCost() {
+            const enrollmentType = document.querySelector('input[name="enrollmentType"]:checked');
+            const residency = document.querySelector('input[name="residency"]:checked');
+            const program = document.getElementById('program').value;
+            const creditHours = parseInt(document.getElementById('creditHours').value) || 0;
+            
+            if (!enrollmentType) {
+                alert('Please select an enrollment type (Online or In-Seat)');
+                return;
+            }
+            
+            if (enrollmentType.value === 'inseat' && !residency) {
+                alert('Please select your residency status');
+                return;
+            }
+            
+            if (!program) {
+                alert('Please select a degree program');
+                return;
+            }
+            
+            if (!creditHours || creditHours < 1 || creditHours > 12) {
+                alert('Please select credit hours between 1 and 12');
+                return;
+            }
+            
+            let tuitionRate = 0;
+            let tuitionRateDisplay = '';
+            
+            if (enrollmentType.value === 'online') {
+                tuitionRate = 372;
+                tuitionRateDisplay = '$372';
+            } else if (enrollmentType.value === 'inseat') {
+                if (residency.value === 'instate') {
+                    tuitionRate = 372;
+                    tuitionRateDisplay = '$372';
+                } else {
+                    tuitionRate = 690;
+                    tuitionRateDisplay = '$690';
+                }
+            }
+            
+            let programFeeRate = 0;
+            const programPrefix = program.split('-')[0];
+            
+            switch(programPrefix) {
+                case 'edu':
+                    programFeeRate = 15;
+                    break;
+                case 'bus':
+                    programFeeRate = 20;
+                    break;
+                case 'nur':
+                    programFeeRate = 125;
+                    break;
+                default:
+                    programFeeRate = 0;
+            }
+            
+            const tuitionCost = tuitionRate * creditHours;
+            const programFees = programFeeRate * creditHours;
+            const numCourses = Math.ceil(creditHours / 3);
+            const booksCost = document.getElementById('includeBooks').checked ? numCourses * 90 : 0;
+            const totalCost = tuitionCost + programFees + booksCost;
+            
+            lastCalculation = {
+                tuitionRateDisplay: tuitionRateDisplay,
+                tuitionCost: tuitionCost,
+                programFees: programFees,
+                numCourses: numCourses,
+                booksCost: booksCost,
+                totalCost: totalCost
+            };
+            
+            updateDisplay();
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('tuitionRate').textContent = '$0';
+            document.getElementById('numCourses').textContent = '0';
+            
+            const creditSlider = document.getElementById('creditHours');
+            const creditValue = document.getElementById('creditHoursValue');
+            const courseCount = document.getElementById('courseCount');
+            
+            creditSlider.addEventListener('input', function() {
+                const hours = this.value;
+                creditValue.textContent = hours;
+                const courses = Math.ceil(hours / 3);
+                courseCount.textContent = courses;
+                
+                const percentage = ((hours - 1) / 11) * 100;
+                this.style.background = 'linear-gradient(to right, #C6B66D 0%, #C6B66D ' + percentage + '%, #e0e0e0 ' + percentage + '%, #e0e0e0 100%)';
+            });
+            
+            creditSlider.dispatchEvent(new Event('input'));
+        });
+    </script>
+</body>
+</html>

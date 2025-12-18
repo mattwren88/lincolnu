@@ -1,0 +1,24 @@
+.mt-5 {
+    margin-top: 50px;
+}
+/* Hover effect */
+.gallery .nGY2GThumbnail:hover {
+	transform: scale(.95);
+	transition: transform .6s;
+}
+.gallery .nGY2GThumbnail {
+	transition: transform .6s;
+}
+/* Lightbox styles */
+.nGY2 {
+    font-family: montserrat, sans-serif;
+}
+.nGY2Viewer .ngy2viewerToolAction .fa {
+    color: #aaa;
+}
+.nGY2Viewer .ngy2viewerToolAction:hover .fa {
+    color: white;
+}
+.nGY2Viewer .ngy2viewerToolAction:hover {
+    opacity: 1 !important;
+}
